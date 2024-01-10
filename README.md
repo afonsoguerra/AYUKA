@@ -4,7 +4,9 @@ AYUKA is a fast viral genotyping toolkit that can analyze raw sequencing reads t
 
 ## Installation 
 
-AYUKA can be installed via the Singularity container available on the [GitHub releases page](https://github.com/afonsoguerra/AYUKA). Alternatively, it can be installed from source by following the instructions in the Singularity recipe file.
+For reproducibility, controlled environment and dependency management, AYUKA is provided as Apptainer (previously known as Singularity) containers. More information and how to install the required software please see [their website.](https://apptainer.org/).
+
+AYUKA can be installed via the Apptainer/Singularity container available on the [GitHub releases page](https://github.com/afonsoguerra/AYUKA). Alternatively, it can be installed from source by following the instructions in the Singularity recipe file.
 
 The key dependencies are:
 
@@ -26,7 +28,7 @@ The software can be invoked by running:
 
 or 
 
-```singularity run ayuka22-222.simg ```
+```singularity run ayuka.simg ```
 _____________________________________________________________
 
 Method description available in our manuscript on biorXiv:
@@ -49,25 +51,25 @@ AYUKA takes as input raw sequencing reads in FASTQ or FASTA format. It can proce
 The basic usage is:
 
 ```
-AYUKA.pl --seqs sample.fq.gz
+singularity run ayuka.simg  --seqs sample.fq.gz
 ```
 
 To analyze paired-end reads:
 
 ```
-AYUKA.pl --seqs sample_R1.fq.gz,sample_R2.fq.gz
+singularity run ayuka.simg --seqs sample_R1.fq.gz,sample_R2.fq.gz
 ``` 
 
 Or:
 
 ```
-AYUKA.pl --seqs sample_R1.fq.gz --seqs sample_R2.fq.gz
+singularity run ayuka.simg --seqs sample_R1.fq.gz --seqs sample_R2.fq.gz
 ```
 
 A text file listing multiple sample files can also be provided:
 
 ```
-AYUKA.pl --fqList list_of_samples.txt
+singularity run ayuka.simg --fqList list_of_samples.txt
 ```
 In this last case, each line of the list file should contain the files for one sample.
 
@@ -178,19 +180,17 @@ AYUKA requires a pre-built k-mer database to perform genotyping. The `ayuka.data
 
 ## Building the Database 
 
-AYUKA provides a Makefile and Singularity container to streamline database building.
+AYUKA provides a dedicated Singularity container to streamline database building.
 
-The Makefile and config file should be placed in the same folder.
+The default app on the container is a makefile that will take care of the whole database building pipeline.
 
-The `ayuka.simg` main Singularity container should also be present in this folder or symbolically linked.
-
-To build the database, run:
+To build the database, customise the database configuration files and in the same directory run:
 
 ```
-make database
+singularity run ayuka-db.simg
 ```
 
-This will launch the `ayuka.simg` container and perform the database build process using the parameters in `ayuka.database.conf`.
+This will launch the `ayuka-db.simg` container and perform the database build process using the parameters in the `ayuka.database.conf` file.
 
 The Makefile will:
 
