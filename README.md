@@ -1,6 +1,6 @@
 # AYUKA: A toolkit for fast viral genotyping using whole genome sequencing.
 
-AYUKA is a fast viral genotyping toolkit that can analyze raw sequencing reads to determine the viral genotypes present in a sample. It was developed by Jose Afonso Guerra-Assuncao at University College London.
+AYUKA is a fast viral genotyping toolkit that can analyze raw sequencing reads to determine the viral genotypes present in a sample. It was developed by Jose Afonso Guerra-Assuncao.
 
 ## Installation 
 
@@ -42,6 +42,10 @@ _____________________________________________________________
 Associated databases available on Zenodo:
 
 José Afonso Guerra-Assunção. (2022). AYUKA Genotyper Databases - Human Adenovirus (HAdV) (22-222) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.6521576
+
+## Found a problem?
+
+If AYUKA is not doing what you expect, you have an issue with it or a feature suggestion, please open an issue or a pull request in this repository! Thanks!
 
 
 ## Usage
