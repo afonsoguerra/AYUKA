@@ -194,6 +194,13 @@ To build the database, customise the database configuration files and in the sam
 singularity run ayuka-db.simg
 ```
 
+If you are working across filesystems, you might need to bind the current path so it is available inside the container, for that use something like
+
+```
+singularity run -B `pwd` ayuka_db.simg
+```
+
+
 This will launch the `ayuka-db.simg` container and perform the database build process using the parameters in the `ayuka.database.conf` file.
 
 The Makefile will:
